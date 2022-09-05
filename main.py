@@ -23,7 +23,7 @@ def send_welcome(message):
 
     bot.send_message(message.chat.id,
                      text="Привет, {0.first_name}! Я помогу тебе быть в курсе расписания "
-                          "уроков😉".format(message.from_user), reply_markup=markup)
+                          "уроков😉 \n ©Raxun".format(message.from_user), reply_markup=markup)
 
 
 @bot.message_handler(commands=['фыаввфлолдфьвфатфлфйййёёёёрёиоолывсмальдкпфоявтмжыдкапкешугкшщцыжчюсмбюиьтаулцд'])
@@ -79,20 +79,22 @@ def raspisynie(message):
 def echo_all(message):
     if message.text == 'Понедельник😭':
         raspisynie(message)
-    if message.text == 'Вторник☹':
+    elif message.text == 'Вторник☹':
         raspisynie(message)
-    if message.text == 'Среда🙁':
+    elif message.text == 'Среда🙁':
         raspisynie(message)
-    if message.text == 'Четверг😕':
+    elif message.text == 'Четверг😕':
         raspisynie(message)
-    if message.text == 'Пятница😐':
+    elif message.text == 'Пятница😐':
         raspisynie(message)
-    if message.text == 'Суббота🙂':
+    elif message.text == 'Суббота🙂':
         raspisynie(message)
-    if message.text == 'Воскресенье🤩':
+    elif message.text == 'Воскресенье🤩':
         video = open('videoplayback.mp4', 'rb')
         bot.send_video(message.chat.id, video)
         bot.send_message(message.chat.id, 'Ты в ловушке! В воскресенье нет уроков!')
+    else:
+        bot.send_message(message.chat.id, 'Ау, кнопки для кого?')
 
 
 bot.polling(none_stop=True)
