@@ -6,7 +6,7 @@ from data.Users import User
 from data.Сountries import Сountries
 
 
-bot = telebot.TeleBot('5699810482:AAHAhXMo1i6pI3t6KzDZ5QGJ0Nma4U9Nyg0', parse_mode=None)
+bot = telebot.TeleBot('5512043516:AAGZovB98UKgdAI1r_ADlojURAsLZhl0BuQ', parse_mode=None)
 
 
 @bot.message_handler(commands=['start', 'help'])
