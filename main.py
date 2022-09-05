@@ -23,7 +23,7 @@ def send_welcome(message):
 
     bot.send_message(message.chat.id,
                      text="Привет, {0.first_name}! Я помогу тебе быть в курсе расписания"
-                          "😉 \n © Raxun".format(message.from_user), reply_markup=markup)
+                          "😉 \n© Raxun".format(message.from_user), reply_markup=markup)
 
 
 @bot.message_handler(commands=['фыаввфлолдфьвфатфлфйййёёёёрёиоолывсмальдкпфоявтмжыдкапкешугкшщцыжчюсмбюиьтаулцд'])
