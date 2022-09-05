@@ -22,8 +22,8 @@ def send_welcome(message):
     markup.add(btn1, btn2, btn3, btn4, btn5, btn6, btn7)
 
     bot.send_message(message.chat.id,
-                     text="Привет, {0.first_name}! Я помогу тебе быть в курсе расписания "
-                          "уроков😉 \n ©Raxun".format(message.from_user), reply_markup=markup)
+                     text="Привет, {0.first_name}! Я помогу тебе быть в курсе расписания"
+                          "😉 \n © Raxun".format(message.from_user), reply_markup=markup)
 
 
 @bot.message_handler(commands=['фыаввфлолдфьвфатфлфйййёёёёрёиоолывсмальдкпфоявтмжыдкапкешугкшщцыжчюсмбюиьтаулцд'])
