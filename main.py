@@ -33,7 +33,6 @@ def raspisynie(message):
     x = datetime.datetime.now()
     print(datetime.datetime.today().weekday())
     if (nums % 2) == 0:
-        print("{0} Четное (числитель)".format(nums))
         if datetime.datetime.today().weekday() != 6:
             db_sess = 'db/Сountries.db'
             day = Сountries.Day
@@ -45,7 +44,6 @@ def raspisynie(message):
             sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
                       User.Ten]
     if (nums % 2) != 0:
-        print("{0} Нечетное (знаменатель)".format(nums))
         if datetime.datetime.today().weekday() != 6:
             db_sess = 'db/User.db'
             day = User.Day
@@ -56,14 +54,11 @@ def raspisynie(message):
             day = Сountries.Day
             sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
                       Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
-    print(db_sess, sp_day, day)
     db_session.global_init(db_sess)
     db_sess = db_session.create_session()
     sp = []
-    print(str(message.text)[0:-1])
     for i in range(1, 11):
         lessons = db_sess.query(sp_day[i - 1]).filter(day == str(message.text)[0:-1]).first()
-        print(lessons)
         sp.append(f"{i}.  {lessons[0]}")
     print(sp)
     bot.send_message(message.chat.id, '\n'.join(sp))
