@@ -77,6 +77,7 @@ def raspisynie(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
+    print("{0.first_name}".format(message.from_user))
     if message.text == 'Понедельник😭':
         raspisynie(message)
     elif message.text == 'Вторник☹':
