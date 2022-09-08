@@ -74,6 +74,7 @@ def raspisynie(message):
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
     print("{0.first_name}".format(message.from_user))
+    print(message.text)
     if message.text == 'Понедельник😭':
         raspisynie(message)
     elif message.text == 'Вторник☹':
@@ -90,6 +91,15 @@ def echo_all(message):
         video = open('videoplayback.mp4', 'rb')
         bot.send_video(message.chat.id, video)
         bot.send_message(message.chat.id, 'Ты в ловушке! В воскресенье нет уроков!')
+    elif (message.text == 'ты' or message.text == 'Ты') and '?' not in message.text:
+        bot.send_message(chat_id=message.reply_to_message.from_user.id, text='Сам такой😡')
+    elif message.text == '?':
+        bot.send_message(message.chat.id, 'Хз')
+    elif message.text == 'нахуй' or message.text == 'на хуй':
+        bot.send_message(message.chat.id, 'Какой на хуй нахуй')
+    elif message.text == 'чу' or message.text == 'Чу' or message.text == 'че' or message.text == 'Че':
+        video = open('Aniche.mp4', 'rb')
+        bot.send_video(message.chat.id, video)
     else:
         bot.send_message(message.chat.id, 'Ау, кнопки для кого?')
 
