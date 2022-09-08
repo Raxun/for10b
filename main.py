@@ -72,9 +72,6 @@ def raspisynie(message):
 def echo_all(message):
     print("{0.first_name}".format(message.from_user))
     print(message.text)
-    print(message.from_user.id)
-    print(message.from_user.first_name)
-    print(message.from_user.last_name)
     print(message.from_user.username)
     if message.text == 'Понедельник😭':
         raspisynie(message)
