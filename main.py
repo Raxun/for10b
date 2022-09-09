@@ -42,7 +42,7 @@ def raspisynie(message):
             sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
                       Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
         elif int(datetime.datetime.today().weekday()) > int(sp_days.index(str(message.text)[0:-1])):
-            bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
+            bot.send_message(message.chat.id, 'Расписание на следующую неделю😚')
             day = User.Day
             sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
                       User.Ten]
@@ -57,7 +57,7 @@ def raspisynie(message):
             sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
                       User.Ten]
         elif int(datetime.datetime.today().weekday()) > int(sp_days.index(str(message.text)[0:-1])):
-            bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
+            bot.send_message(message.chat.id, 'Расписание на следующую неделю😚')
             day = Сountries.Day
             sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
                       Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
@@ -71,7 +71,7 @@ def raspisynie(message):
         sp.append(f"{i}.  {lessons[0]}")
     bot.send_message(message.chat.id, '\n'.join(sp))
     if datetime.datetime.today().weekday() == 6:
-        bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
+        bot.send_message(message.chat.id, 'Расписание на следующую неделю😚')
 
 
 @bot.message_handler(func=lambda message: True)
