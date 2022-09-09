@@ -68,7 +68,6 @@ def raspisynie(message):
     sp2 = ['8:30', '9:20', '10:20', '11:20', '12:10', '13:00', '14:00', '15:00', '15:50', '16:40']
     for i in range(1, 9):
         lessons = db_sess.query(sp_day[i - 1]).filter(day == str(message.text)[0:-1]).first()
-        print(lessons)
         sp.append(f"{i}.  {lessons[0]}")
     bot.send_message(message.chat.id, '\n'.join(sp))
     if datetime.datetime.today().weekday() == 6:
