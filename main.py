@@ -2,11 +2,11 @@ import datetime
 import telebot
 from telebot import types
 from data import db_session
-from data.Users import User
+from data.Сountries import User
 from data.Сountries import Сountries
 
 
-bot = telebot.TeleBot('5512043516:AAGZovB98UKgdAI1r_ADlojURAsLZhl0BuQ', parse_mode=None)
+bot = telebot.TeleBot('5660704246:AAGlm3uHQ71UiaAt4VyacnpNVpeSWlY2vfI', parse_mode=None)
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -28,43 +28,51 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['фыаввфлолдфьвфатфлфйййёёёёрёиоолывсмальдкпфоявтмжыдкапкешугкшщцыжчюсмбюиьтаулцд'])
 def raspisynie(message):
+    db_session.global_init('db/Сountries.db')
+    db_sess = db_session.create_session()
     sp_day = []
+    sp = []
+    sp_days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
     nums = int(datetime.datetime.utcnow().isocalendar()[1])
     x = datetime.datetime.now()
-    print(datetime.datetime.today().weekday())
     if (nums % 2) == 0:
-        if datetime.datetime.today().weekday() != 6:
-            db_sess = 'db/Сountries.db'
+        if datetime.datetime.today().weekday() != 6 and \
+                int(datetime.datetime.today().weekday()) <= int(sp_days.index(str(message.text)[0:-1])):
             day = Сountries.Day
             sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
                       Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
+        elif int(datetime.datetime.today().weekday()) > int(sp_days.index(str(message.text)[0:-1])):
+            bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
+            day = User.Day
+            sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
+                      User.Ten]
         else:
-            db_sess = 'db/User.db'
             day = User.Day
             sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
                       User.Ten]
     if (nums % 2) != 0:
-        if datetime.datetime.today().weekday() != 6:
-            db_sess = 'db/User.db'
+        if datetime.datetime.today().weekday() != 6 and \
+                int(datetime.datetime.today().weekday()) <= int(sp_days.index(str(message.text)[0:-1])):
             day = User.Day
             sp_day = [User.Fir, User.Sec, User.Thi, User.For, User.Fiv, User.Six, User.Sev, User.Eig, User.Nin,
                       User.Ten]
-        else:
-            db_sess = 'db/Сountries.db'
+        elif int(datetime.datetime.today().weekday()) > int(sp_days.index(str(message.text)[0:-1])):
+            bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
             day = Сountries.Day
             sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
                       Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
-    db_session.global_init(db_sess)
-    db_sess = db_session.create_session()
-    sp = []
+        else:
+            day = Сountries.Day
+            sp_day = [Сountries.Fir, Сountries.Sec, Сountries.Thi, Сountries.For, Сountries.Fiv, Сountries.Six,
+                      Сountries.Sev, Сountries.Eig, Сountries.Nin, Сountries.Ten]
     sp2 = ['8:30', '9:20', '10:20', '11:20', '12:10', '13:00', '14:00', '15:00', '15:50', '16:40']
     for i in range(1, 9):
         lessons = db_sess.query(sp_day[i - 1]).filter(day == str(message.text)[0:-1]).first()
+        print(lessons)
         sp.append(f"{i}.  {lessons[0]}")
     bot.send_message(message.chat.id, '\n'.join(sp))
     if datetime.datetime.today().weekday() == 6:
-        bot.send_message(message.chat.id, 'Сегодня воскресенье, поэтому расписание показывается на следующую неделю😚')
-
+        bot.send_message(message.chat.id, 'Расписание показывается на следующую неделю😚')
 
 
 @bot.message_handler(func=lambda message: True)
