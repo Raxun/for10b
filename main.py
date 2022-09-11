@@ -70,8 +70,6 @@ def raspisynie(message):
         lessons = db_sess.query(sp_day[i - 1]).filter(day == str(message.text)[0:-1]).first()
         sp.append(f"{i}.  {lessons[0]}")
     bot.send_message(message.chat.id, '\n'.join(sp))
-    if datetime.datetime.today().weekday() == 6:
-        bot.send_message(message.chat.id, 'Расписание отображается на следующую неделю👉👌')
 
 
 @bot.message_handler(func=lambda message: True)
