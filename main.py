@@ -94,7 +94,9 @@ def echo_all(message):
         bot.send_video(message.chat.id, video)
         bot.send_message(message.chat.id, 'Ты в ловушке! В воскресенье нет уроков!')
     elif ('ты' in message.text or 'Ты' in message.text) and '?' not in message.text:
-        bot.send_message(message.chat.id, text='Сам такой😡')
+        bot.send_message(message.chat.id, text='Я???')
+    elif ('да' in message.text or 'Да' in message.text) and '?' not in message.text:
+        bot.send_message(message.chat.id, text='Пизда😡')
     elif '?' in message.text:
         bot.send_message(message.chat.id, 'Хз')
     elif 'нахуй' in message.text or 'на хуй' in message.text:
