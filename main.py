@@ -102,7 +102,7 @@ def echo_all(message):
     elif 'нахуй' in str(message.text).lower() or 'на хуй' in str(message.text).lower():
         bot.send_message(message.chat.id, 'Какой на хуй нахуй')
     elif  str(message.text).lower().count('ы') > 2:
-        photo = 'IMG_20220920_094449_942.jpg', 'rb')
+        photo = ('IMG_20220920_094449_942.jpg', 'rb')
         bot.send_photo(message.chat.id, photo)
     elif 'чу' in str(message.text).lower() or 'че' in str(message.text).lower():
         video = open('Aniche.mp4', 'rb')
