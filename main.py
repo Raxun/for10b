@@ -93,15 +93,15 @@ def echo_all(message):
         video = open('videoplayback.mp4', 'rb')
         bot.send_video(message.chat.id, video)
         bot.send_message(message.chat.id, 'Ты в ловушке! В воскресенье нет уроков!')
-    elif ('ты' in message.text or 'Ты' in message.text) and '?' not in message.text:
+    elif 'ты' in str(message.text).lower() and '?' not in message.text:
         bot.send_message(message.chat.id, text='Я???')
-    elif ('да' in message.text or 'Да' in message.text) and '?' not in message.text:
+    elif 'да' in str(message.text).lower() and '?' not in message.text:
         bot.send_message(message.chat.id, text='Пизда😡')
     elif '?' in message.text:
         bot.send_message(message.chat.id, 'Хз')
-    elif 'нахуй' in message.text or 'на хуй' in message.text:
+    elif 'нахуй' in str(message.text).lower() or 'на хуй' in str(message.text).lower():
         bot.send_message(message.chat.id, 'Какой на хуй нахуй')
-    elif'чу' in message.text or 'Чу' in message.text or 'че' in message.text or 'Че' in message.text:
+    elif 'чу' in str(message.text).lower() or 'че' in str(message.text).lower():
         video = open('Aniche.mp4', 'rb')
         bot.send_video(message.chat.id, video)
     else:
