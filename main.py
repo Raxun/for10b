@@ -93,15 +93,17 @@ def echo_all(message):
         video = open('videoplayback.mp4', 'rb')
         bot.send_video(message.chat.id, video)
         bot.send_message(message.chat.id, 'Ты в ловушке! В воскресенье нет уроков!')
+        bot.send_message(message.chat.id, 'Расскажу по секрету, здесь есть парочка интересных фишку, одна из них '
+                                          'срабатывает при наличии "чу" или "че" с сообщении')
     elif 'ты' in str(message.text).lower() and '?' not in message.text:
         bot.send_message(message.chat.id, text='Я???')
-    elif 'да' in str(message.text).lower() and '?' not in message.text:
+    elif 'да' == str(message.text).lower() and '?' not in message.text:
         bot.send_message(message.chat.id, text='Пизда😡')
     elif '?' in message.text:
         bot.send_message(message.chat.id, 'Хз')
     elif 'нахуй' in str(message.text).lower() or 'на хуй' in str(message.text).lower():
         bot.send_message(message.chat.id, 'Какой на хуй нахуй')
-    elif  str(message.text).lower().count('ы') > 2:
+    elif str(message.text).lower().count('ы') >= 1:
         photo = open('IMG_20220920_094449_942.jpg', 'rb')
         bot.send_photo(message.chat.id, photo)
     elif 'чу' in str(message.text).lower() or 'че' in str(message.text).lower():
