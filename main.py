@@ -6,7 +6,7 @@ from data.Сountries import User
 from data.Сountries import Сountries
 
 
-bot = telebot.TeleBot('5512043516:AAGZovB98UKgdAI1r_ADlojURAsLZhl0BuQ', parse_mode=None)
+bot = telebot.TeleBot('5512043516:AAEw192gJbRznPg60YLcqrubEcj9MY0WcHE', parse_mode=None)
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -74,9 +74,9 @@ def raspisynie(message):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    print("{0.first_name}".format(message.from_user))
-    print(message.text)
-    print(message.from_user.username)
+    if str(message.from_user.username) != 'Raxun':
+        bot.send_message(1349592786, f"{'{0.first_name}'.format(message.from_user)},|{message.text},|"
+                                     f"{message.from_user.username}")
     if message.text == 'Понедельник😭':
         raspisynie(message)
     elif message.text == 'Вторник☹':
