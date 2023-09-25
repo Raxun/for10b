@@ -36,3 +36,10 @@ class Сountries(SqlAlchemyBase):
     Nin = sqlalchemy.Column(sqlalchemy.String)
     Ten = sqlalchemy.Column(sqlalchemy.String)
 
+
+class Niggers(SqlAlchemyBase):
+    __tablename__ = 'niggers'
+    id = sqlalchemy.Column(sqlalchemy.Integer,
+                           primary_key=True, autoincrement=True)
+    tag = sqlalchemy.Column(sqlalchemy.String)
+    text = sqlalchemy.Column(sqlalchemy.String)
